@@ -12,8 +12,8 @@ function _git_is_dirty
   echo (command git status -s --ignore-submodules=dirty ^/dev/null)
 end
 
-function _rvm_info
-  echo (command rvm-prompt v p g)
+function _ruby_info
+  echo (command ruby -v | cut -d' ' -f2)
 end
 
 function _box_name
@@ -29,7 +29,7 @@ function fish_prompt
   set -l green (set_color green)
   set -l normal (set_color normal)
 
-  set -l rvm $yellow (_rvm_info)
+  set -l rvm $yellow (_ruby_info)
   set -l cwd $blue (basename (prompt_pwd))
   set -l box $magenta (_box_name)
 
